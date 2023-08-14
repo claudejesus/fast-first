@@ -1,0 +1,139 @@
+We value your privacy
+
+We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+
+Customize
+Accept All
+
+
+
+
+
+
+
+Skip to content
+IoT for Geeks
+Home
+Posts
+IoT
+Development Boards
+Peripherals
+Troubleshooting
+About Us
+Contact US
+Interface I2C OLED display with NodeMCU
+How to interface I2C OLED display SSD 1306 with NodeMCU
+Leave a Comment / NodeMCU, OLED Display / By Abhishek
+
+ Views: 8,891
+We have seen that we can interface a fingerprint scanner with NodeMCU is this post. Now, in this post, we will interface I2C OLED display with NodeMCU. This OLED display module is SSD1306. The resolution of the SSD1306 OLED display is 128 x 64. You can find the basics of OLED display here.
+
+SSD1306 OLED Display
+This OLED display is 0.96 inches. Before starting, we should know the construction of this display. This is important when you need to create a proper GUI. The screen of the display is divided into 8 pages in a row. The single page is consists of 8 rows and 128 columns. The image below shows the more detailed structure of the SSD1306 display.
+
+SSD1306 OLED Dispay Structure
+SSD1306 OLED Display Structure
+Hence, 8 pixels per page and such 8 pages make it 64 pixels per column. Such 128 columns are present in this display. As we know, OLED displays don’t have any back-light. It has an individual led for a pixel. It means it has 128*64 = 8,192 different LED. SSD1306 module has monochrome LEDs. Means display will be only of a single color.
+
+Interface I2C OLED Display with NodeMCU
+As we studied the structure of OLED Display, now let’s move to the interfacing of an OLED display with NodeMCU. As mentioned, this OLED display works on the I2C serial bus. NodeMCU supports UART, SPI and I2C modes of communication. To use the I2C port of NodeMCU, we need to do the following arrangement.
+
+OLED Display Pin	NodeMCU Pin
+SCL	D1
+SDA	D2
+VCC	3V
+GND	G
+The I2C port of NodeMCU is at Pin D1 and D2. As this display works on 3.3V we can connect the Vcc directly to the 3V pin of NodeMCU. The image below shows the interfacing of OLED display 1306 with NodeMCU.
+
+Interface I2C OLED display with NodeMCU
+Interface I2C OLED display with NodeMCU
+This interfacing will work for all versions of NodeMCU. Now, let’s prepare a code for interfacing. Now, before going for the program, remember one thing. The I2C OLED Display SSD1306 comes with different variants. If there is no reset pin on your display module, then you can use the code below as it. If your OLED Display has reset pin, then edit that line in the code.
+
+Program to interface I2C OLED Display with NodeMCU
+We will start with the basic hello world program. Now, before going to the program, we need to install the required libraries for SSD1306. Download the required libraries from the link given below and go for the program.
+
+Download I2C OLED Display Libraries
+Hello World! Code for I2C OLED Display
+//For more hardware details, visit https://iotforgeeks.com/interface-i2c-oled-display-ssd1306-with-nodemcu
+
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128 // OLED display width, in pixels
+#define SCREEN_HEIGHT 64 // OLED display height, in pixels
+#define OLED_ADDR 0x3C   // Address may be different for your module, also try with 0x3D if this doesn't work
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+#define OLED_RESET -1 // Reset pin # (or -1 if sharing Arduino reset pin)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+//For more hardware details, visit https://iotforgeeks.com/interface-i2c-oled-display-ssd1306-with-nodemcu
+
+void setup() {
+  Serial.begin(9600);
+  display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDR);
+  display.clearDisplay();           // Required to clear display
+  display.display();
+  
+  display.setTextColor(WHITE);
+  display.setTextSize(1);           // Set text size
+  display.print("Hello World!");
+
+  display.setTextSize(2);
+  display.setCursor(0, 15);         // Set cursor
+  display.print("Hello"); 
+  display.setCursor(0, 32);
+  display.print("World!");
+
+
+  display.display();                // Always required when changes are made and when you have to display them
+  while(1) delay(50);               
+
+}
+
+void loop() {
+}
+The above code will print “Hello World!” in two varients. With text size 1 and with text size 2. The output will be exactly as shown in image below.
+
+I2C OLED Display Hello World!
+I2C OLED Display Hello World!
+
+Post navigation
+← Previous Post
+Next Post →
+ Subscribe 
+guest
+
+
+{}[+]
+0 COMMENTS
+Search for:
+Search …
+Most Viewed Posts
+I2C OLED Display troubleshoot Guide min I2C OLED Display not working? 7 things you should check before considering it dead
+Recover dead raspberry pi min Dead Raspberry Pi 3B+? Is it possible to recover?
+Program Blue Pill STM 32 from USB min Program Blue Pill STM32 directly with USB port
+Controlling Servo Motors with Joystick A guide to control servo motor with Joystick and Arduino with program
+Interface I2C OLED display with NodeMCU How to interface I2C OLED display SSD 1306 with NodeMCU
+Categories
+Categories
+Select Category
+Stay Updated!
+Email
+IoT for Geeks
+IoT for Geeks is an educational blog that includes articles related to the Internet of Things and Electronics. News related new development board, information on development boards for newbies. Tutorials for hardware setup, Troubleshoot guide and many more!
+
+Popular
+I2C OLED Display not working? 7 things you should check before considering it dead
+Dead Raspberry Pi 3B+? Is it possible to recover?
+Program Blue Pill STM32 directly with USB port
+A guide to control servo motor with Joystick and Arduino with program
+Connect with Us
+Facebook
+Instagram
+Email
+Stay Updated
+First name or full name
+Email
+HomePrivacy PolicyDisclaimerAbout UsContact US
+Copyright © 2023 IoT for Geeks

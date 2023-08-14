@@ -1,0 +1,74 @@
+
+
+NodeMCU	RFID
+D4	RST
+D3	SDA
+D5	SCK// ss
+D6	MISO
+D7	MOSI
+VCC	3.3V
+GND	GND
+IRQ	 
+
+
+Home / Products / Other Components / Display / 1.3″ Inch Blue I2C IIC OLED LCD Module
+1.3″ Inch Blue I2C IIC OLED LCD Module
+RWF 8,500.00
+
+1.3″ Inch Blue I2C Module is diagonal size 1.3 inch COG OLED display with PCB board on it.
+
+
+To connect an I2C OLED display to a NodeMCU board and control it using code, you need to follow these steps:
+
+1. Connect the hardware:
+   - Connect the VCC pin of the OLED display to the 3.3V power supply pin on the NodeMCU.
+   - Connect the GND pin of the OLED display to the ground (GND) pin on the NodeMCU.
+   - Connect the SDA pin of the OLED display to the D2 pin on the NodeMCU.
+   - Connect the SCL pin of the OLED display to the D1 pin on the NodeMCU.
+   - Some OLED displays may have additional pins like RST (reset) or CS (chip select), which you can connect as per the display's requirements. However, for basic functionality, these pins are not always necessary.
+
+2. Install necessary libraries:
+   - Open the Arduino IDE.
+   - Go to "Sketch" -> "Include Library" -> "Manage Libraries".
+   - Search for "Adafruit SSD1306" and install the library by Adafruit.
+   - Search for "Adafruit GFX Library" and install the library by Adafruit.
+
+3. Write the code:
+   ```cpp
+   #include <Wire.h>
+   #include <Adafruit_GFX.h>
+   #include <Adafruit_SSD1306.h>
+
+   #define OLED_ADDRESS 0x3C // I2C address of your OLED display
+
+   Adafruit_SSD1306 display(128, 64, &Wire, OLED_ADDRESS);
+
+   void setup() {
+     // Initialize the OLED display
+     display.begin(SSD1306_SWITCHCAPVCC, OLED_ADDRESS);
+     display.clearDisplay();
+     display.setTextColor(WHITE);
+   }
+
+   void loop() {
+     display.clearDisplay();
+
+     display.setTextSize(2);
+     display.setCursor(0, 0);
+     display.println("Hello, World!");
+
+     display.display();
+     delay(1000);
+   }
+   ```
+
+4. Upload the code:
+   - Connect your NodeMCU board to your computer via USB.
+   - Select the correct board and port in the Arduino IDE under "Tools".
+   - Click on the "Upload" button to upload the code to the NodeMCU.
+
+The code above initializes the OLED display, clears the display, sets the text size, prints "Hello, World!" at the top left corner, and then displays the content on the OLED. It loops through this process with a delay of 1 second.
+
+Note: Make sure to adjust the OLED_ADDRESS value (0x3C) if your OLED display has a different I2C address. You can find the address using an I2C scanner sketch or by referring to the OLED display documentation.
+
+That's it! The NodeMCU should now be connected to the I2C OLED display, and you can modify the code to display different content or implement additional functionality as per your requirements.

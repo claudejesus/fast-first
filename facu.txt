@@ -1,0 +1,16 @@
+SN	Training course   	Application deadline	Registration link
+1.	 AI/Machine learning	 30th June 2023	 https://forms.gle/fgMQakChjgD8GmC7A
+
+2	 Cyber security	 28th July 2023	 https://forms.gle/PeSzjsEF2pwGxCJ89
+
+ 3	 Networking	 11th August 2023	 https://forms.gle/UCNVVb8h8ZekfFf97
+
+ 	 Robotics and Drone Technology	 8th September 2023	 https://forms.gle/C8jGXnCuaJo5uFK76
+
+4		 	
+5	 Big Data Analytics and Visualization	 6th October 2023	https://forms.gle/MTQj94GukbB1t5Qb6 
+
+6	Web services and API programming	3rd November 2023	https://forms.gle/xuTE1ZXKv3hE3dgn7
+
+7	Embedded systems and programming	4th December 2023	https://forms.gle/f5AENMosNbrxF4xA7
+

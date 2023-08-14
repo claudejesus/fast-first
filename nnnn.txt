@@ -1,0 +1,26 @@
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> master
+
+
+C:\Users\CLAUDE\Documents\Arduino\newelk>git branch
+* master
+
+C:\Users\CLAUDE\Documents\Arduino\newelk>git branch -la
+* master
+  remotes/origin/master
+  remotes/origin/patience
+
+C:\Users\CLAUDE\Documents\Arduino\newelk>git checkout master
+Already on 'master'
+
+C:\Users\CLAUDE\Documents\Arduino\newelk>git merge remotes/origin/master
+Updating 30c7a80..fdb05d9
+Fast-forward
+ README.md  | 31 +++++++++++++++++++++++++++++++
+ newelk.ino | 33 ++++++++++++---------------------
+ 2 files changed, 43 insertions(+), 21 deletions(-)
+ create mode 100644 README.md
+
+C:\Users\CLAUDE\Documents\Arduino\newelk>
+C:\Users\CLAUDE\Documents\Arduino\newelk>
